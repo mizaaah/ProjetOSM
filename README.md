@@ -14,3 +14,7 @@ J'ai rajouté des lignes dans le css pour la box connexion pour pouvoir entrer m
 
 Fin de la box connexion
 Je m'attaque bientot a la box inscription en ajoutant du JavaScrpit
+
+17/03/2025 8h03
+
+Finalisation de la box connexion je m'attaque a la box inscription
