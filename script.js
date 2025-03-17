@@ -5,3 +5,4 @@ document.getElementById('closeIcon').addEventListener('click', function() {
 document.getElementById('openForm').addEventListener('click', function() {
     document.getElementById('formContainer').classList.remove('hidden');
 });
+
