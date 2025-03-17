@@ -92,8 +92,15 @@ header {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
+    visibility: visible;
 }
 
+.tout.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 .tout .boite {
     width: 100%;
     padding: 40px;
