@@ -15,3 +15,9 @@ document.querySelector('.incrilien').addEventListener('click', function(event) {
 document.getElementById('closeRegisterIcon').addEventListener('click', function() {
     document.getElementById('registerContainer').classList.add('hidden');
 });
+
+document.querySelector('.colien').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('registerContainer').classList.add('hidden');
+    document.getElementById('formContainer').classList.remove('hidden');
+});

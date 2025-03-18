@@ -13,3 +13,7 @@ J'ai rajouté des lignes dans le css pour la box connexion pour pouvoir entrer m
 18/03/2025 12h35
 
 J'ai réussi a faire le bloc inscription maintenant faire le mene de navigation 
+
+18/03/2025 12h52
+
+Rajout de fonction dans le JS pour que des que j'appuie sur "J'ai déjà un compte" ça me met le menu connexion et ça cache le menu inscription
