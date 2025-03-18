@@ -17,3 +17,5 @@ J'ai réussi a faire le bloc inscription maintenant faire le mene de navigation
 18/03/2025 12h52
 
 Rajout de fonction dans le JS pour que des que j'appuie sur "J'ai déjà un compte" ça me met le menu connexion et ça cache le menu inscription
+
+J'ai reussi a faire un bloc pour le mdp oublié mais ça ne marche pas parfaitement faut que je regle des trucs, la croix n haut a droite du bloc le lien # pour aller sur le bloc de co etc 
