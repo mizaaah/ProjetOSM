@@ -80,7 +80,10 @@ header {
 }
 
 .tout {
-    position: relative;
+    position: absolute; /* Modifié pour centrer les blocs */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px;
     height: 440px;
     background: transparent;
@@ -98,6 +101,11 @@ header {
 }
 
 .tout.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hidden {
     opacity: 0;
     visibility: hidden;
 }
