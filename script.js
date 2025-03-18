@@ -21,3 +21,10 @@ document.querySelector('.colien').addEventListener('click', function(event) {
     document.getElementById('registerContainer').classList.add('hidden');
     document.getElementById('formContainer').classList.remove('hidden');
 });
+
+document.querySelector('.oublielien').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('formContainer').classList.add('hidden');
+    document.getElementById('registerContainer').classList.add('hidden');
+    document.getElementById('mdpOublie').classList.remove('hidden');
+});
