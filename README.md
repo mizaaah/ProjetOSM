@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-> [!NOTE]  
+> **:memo: NOTE**  
 > Le projet OSM a pour objectif de développer une application permettant de répertorier les établissements (restaurants, garages, etc.) d’une ville via l’API OpenStreetMap. Les utilisateurs pourront rechercher une ville, afficher une carte interactive, consulter des informations sur les établissements et laisser des avis.
 
 ## 2. Objectifs
@@ -17,47 +17,47 @@
 
 ### 3.1 Page d’Accueil
 
-- **Présentation générale du projet**  
+- **:star: Présentation générale du projet**  
   - Affichage d'une brève description de l'application.  
   - Introduction aux fonctionnalités principales.
 
-- **Menu de navigation**  
+- **:gear: Menu de navigation**  
   - Accès rapide à la carte interactive.  
   - Liens vers la page d’inscription et de connexion.
 
-- **Recherche de ville**  
+- **:mag_right: Recherche de ville**  
   - Barre de recherche permettant de saisir le nom d'une ville.  
   - Affichage de suggestions lors de la saisie.  
   - Une fois la ville sélectionnée, chargement de la carte avec les établissements associés.
 
 ### 3.2 Carte interactive
 
-- **Carte OpenStreetMap**  
+- **:world_map: Carte OpenStreetMap**  
   - Intégration de l'API OpenStreetMap pour afficher la carte.  
   - Affichage des points d’intérêts (restaurants, garages, etc.) sous forme de marqueurs.  
   - Possibilité de zoomer, dézoomer et déplacer la carte.
 
-- **Informations sur les établissements**  
+- **:information_source: Informations sur les établissements**  
   - Lorsque l’utilisateur clique sur un marqueur, un infobulle s’affiche avec les informations de l’établissement : nom, adresse, avis, etc.
 
-- **Filtres de recherche**  
+- **:mag: Filtres de recherche**  
   - Possibilité de filtrer les établissements par catégorie (restaurant, garage, etc.).  
   - Filtre par note moyenne des établissements.
 
 ### 3.3 Utilisateur non connecté
 
-- **Navigation et consultation**  
+- **:lock: Navigation et consultation**  
   - L’utilisateur peut naviguer sur la carte, consulter la liste des établissements et voir leurs informations sans se connecter.
 
-- **Accès aux pages d’inscription et de connexion**  
+- **:link: Accès aux pages d’inscription et de connexion**  
   - L’utilisateur peut se rediriger vers la page d’inscription/connexion s'il souhaite laisser un avis ou interagir avec le contenu.
 
 ### 3.4 Utilisateur connecté
 
-- **Espace personnel**  
+- **:bust_in_silhouette: Espace personnel**  
   - Possibilité de voir ses avis et évaluations passées.
 
-- **Laisser un avis et évaluation**  
+- **:star: Laisser un avis et évaluation**  
   - Les utilisateurs peuvent attribuer une note (de 1 à 5 étoiles) et rédiger un avis pour chaque établissement visité.  
   - Avis modifiable ou supprimable.
 
@@ -70,18 +70,23 @@
 
 ## 5. Interface utilisateur
 
-- **Responsive Design**  
+- **:iphone: Responsive Design**  
   - L’application doit être adaptée aux appareils mobiles, tablettes et ordinateurs de bureau.
 
-- **Éléments d’interface**  
+- **:art: Éléments d’interface**  
   - Boutons clairs pour chaque action (connexion, inscription, recherche, filtrage des établissements, etc.).  
   - Utilisation de cartes interactives avec des marqueurs bien visibles.  
   - Section d’avis et de notation facilement accessible et compréhensible.
 
 ## 6. Performances
 
-- **Temps de réponse**  
+- **:zap: Temps de réponse**  
   - Le temps de chargement de la carte et des informations sur les établissements ne doit pas dépasser 3 secondes.
 
-- **Optimisation des requêtes API**  
+- **:telescope: Optimisation des requêtes API**  
   - Les requêtes vers l'API OpenStreetMap doivent être optimisées pour limiter les appels et améliorer la performance globale.
+
+## 7. Mise en garde
+
+> **:warning: WARNING**  
+> Cette application est en cours de développement et pourrait encore contenir des erreurs ou des fonctionnalités incomplètes. Merci de votre patience pendant que nous l'améliorons.
