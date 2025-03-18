@@ -1,7 +1,7 @@
 # Cahier des Charges du Projet OSM
 1. Introduction
 
-Le projet OSM a pour objectif de développer une application permettant de répertorier les établissements (restaurants, garages, etc.) d’une ville via l’API OpenStreetMap. Les utilisateurs pourront rechercher une ville, afficher une carte interactive, consulter des informations sur les établissements et laisser des avis.
+> [!NOTE] Le projet OSM a pour objectif de développer une application permettant de répertorier les établissements (restaurants, garages, etc.) d’une ville via l’API OpenStreetMap. Les utilisateurs pourront rechercher une ville, afficher une carte interactive, consulter des informations sur les établissements et laisser des avis.
 
 2. Objectifs
 
