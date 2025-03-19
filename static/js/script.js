@@ -1,41 +1,42 @@
-document.getElementById('closeIcon').addEventListener('click', function() {
-    document.getElementById('formContainer').classList.add('hidden');
-});
+$(document).ready(function() {
+    $('#closeIcon').on('click', function() {
+        $('#formContainer').addClass('hidden');
+    });
 
-document.getElementById('openForm').addEventListener('click', function() {
-    document.getElementById('formContainer').classList.remove('hidden');
-});
+    $('#openForm').on('click', function() {
+        $('#formContainer').removeClass('hidden');
+    });
 
-document.querySelector('.incrilien').addEventListener('click', function(event) {
-    event.preventDefault();
-    document.getElementById('formContainer').classList.add('hidden');
-    document.getElementById('registerContainer').classList.remove('hidden');
-});
+    $('.incrilien').on('click', function(event) {
+        event.preventDefault();
+        $('#formContainer').addClass('hidden');
+        $('#registerContainer').removeClass('hidden');
+    });
 
-document.getElementById('closeRegisterIcon').addEventListener('click', function() {
-    document.getElementById('registerContainer').classList.add('hidden');
-});
+    $('#closeRegisterIcon').on('click', function() {
+        $('#registerContainer').addClass('hidden');
+    });
 
-document.querySelector('.colien').addEventListener('click', function(event) {
-    event.preventDefault();
-    document.getElementById('registerContainer').classList.add('hidden');
-    document.getElementById('formContainer').classList.remove('hidden');
-});
+    $('.colien').on('click', function(event) {
+        event.preventDefault();
+        $('#registerContainer').addClass('hidden');
+        $('#formContainer').removeClass('hidden');
+    });
 
-document.querySelector('.oublielien').addEventListener('click', function(event) {
-    event.preventDefault();
-    document.getElementById('formContainer').classList.add('hidden');
-    document.getElementById('registerContainer').classList.add('hidden');
-    document.getElementById('mdpOublie').classList.remove('hidden');
-});
+    $('.oublielien').on('click', function(event) {
+        event.preventDefault();
+        $('#formContainer').addClass('hidden');
+        $('#registerContainer').addClass('hidden');
+        $('#mdpOublie').removeClass('hidden');
+    });
 
-// Ajout des événements pour le formulaire de mot de passe oublié
-document.querySelector('#mdpOublie .iconferme').addEventListener('click', function() {
-    document.getElementById('mdpOublie').classList.add('hidden');
-});
+    $('#mdpOublie .iconferme').on('click', function() {
+        $('#mdpOublie').addClass('hidden');
+    });
 
-document.querySelector('#mdpOublie .oublielien').addEventListener('click', function(event) {
-    event.preventDefault();
-    document.getElementById('mdpOublie').classList.add('hidden');
-    document.getElementById('formContainer').classList.remove('hidden');
+    $('#mdpOublie .oublielien').on('click', function(event) {
+        event.preventDefault();
+        $('#mdpOublie').addClass('hidden');
+        $('#formContainer').removeClass('hidden');
+    });
 });
