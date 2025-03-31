@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Street Map</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    
+    <header>
+        <h2 class="logo">Map</h2>
+        <nav class="navigation">
+            <a href="accueil.html">Informations</a>
+            <a href="#">Services</a>
+            <a href="#">Map</a>
+            <a href="mailto:mizaah.833@gmail.com">Contact</a>
+            <button class="connexion" id="openForm">Connexion</button>
+        </nav>
+    </header>
+
+    <!-- Bloc pour connexion -->
+
+    <div class="tout" id="formContainer">
+        <span class="iconferme" id="closeIcon">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <div class="boite">
+            <h2>Connexion</h2>
+            <form action="#">
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Mot de passe</label>
+                </div>
+                <div class="oubliemdp">
+                    <label><input type="checkbox"> Se souvenir de moi</label>
+                    <a href="#" class="oublielien">Mot de passe oublié ?</a>
+                </div>
+                <button type="submit" class="btn">Connexion</button>
+                <div class="co">
+                    <p>Je n'ai pas de compte ?<a href="#" class="incrilien"> Inscription</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bloc pour inscription -->
+    
+    <div class="tout hidden" id="registerContainer">
+        <span class="iconferme" id="closeRegisterIcon">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <div class="boite">
+            <h2>Inscription</h2>
+            <form action="#">
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Nom</label>
+                </div>
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Mot de passe</label>
+                </div>
+                <button type="submit" class="btn">Inscription</button>
+                <div class="co">
+                    <p>J'ai déjà un compte ?<a href="#" class="colien"> Connexion</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bloc pour MDP oublié -->
+
+    <div class="tout hidden" id="mdpOublie">
+        <span class="iconferme" id="closeMdpOublieIcon">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <div class="boite">
+            <h2>Mot de passe oublié</h2>
+            <form action="#">
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Mot de passe</label>
+                </div>
+                <div class="texteboite">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Retaper votre mot de passe</label>
+                </div>
+                <button type="submit" class="btn">Valider</button>
+                <div class="co">
+                    <p>Souvenez vous de votre mot de passe ?<a href="#" class="oublielien">Connexion</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../static/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

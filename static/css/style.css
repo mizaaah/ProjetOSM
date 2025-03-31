@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('background.jpg') no-repeat;
+    background: url('../img/background.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -80,7 +80,10 @@ header {
 }
 
 .tout {
-    position: relative;
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px;
     height: 440px;
     background: transparent;
@@ -98,6 +101,11 @@ header {
 }
 
 .tout.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hidden {
     opacity: 0;
     visibility: hidden;
 }

@@ -1,0 +1,26 @@
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les répertoires de build
+build/
+dist/
+
+# Ignorer les fichiers de configuration spécifiques à l'IDE
+.vscode/
+.idea/
+
+# Ignorer les fichiers de dépendances
+node_modules/
+
+# Ignorer les fichiers temporaires du système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de configuration spécifiques à l'environnement
+.env
+
+# Ignorer les fichiers de cache
+.cache/
+
+# Ignorer les fichiers d'images générés
+src/img/
