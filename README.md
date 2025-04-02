@@ -86,7 +86,13 @@
 - **:telescope: Optimisation des requêtes API**  
   - Les requêtes vers l'API OpenStreetMap doivent être optimisées pour limiter les appels et améliorer la performance globale.
 
-## 7. Mise en garde
+## 7. Langages utilisés
+- **:earth: Langages utilisés**
+  - HTML/CSS/JS
+  - Python Web
+  - SQL
+
+## 8. Mise en garde
 
 > **:warning: WARNING**  
 > Cette application est en cours de développement et pourrait encore contenir des erreurs ou des fonctionnalités incomplètes. Merci de votre patience pendant que nous l'améliorons.
