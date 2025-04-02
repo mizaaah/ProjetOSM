@@ -1,5 +1,16 @@
 # Cahier des Charges du Projet OSM
 
+## Table des matières
+
+1. [Introduction](#1-introduction)  
+2. [Objectifs](#2-objectifs)  
+3. [Fonctionnalités principales](#3-fonctionnalités-principales)  
+4. [Architecture technique](#4-architecture-technique)  
+5. [Interface utilisateur](#5-interface-utilisateur)  
+6. [Performances](#6-performances)  
+7. [Langages utilisés](#7-langages-utilisés)  
+8. [Mise en garde](#8-mise-en-garde)
+
 ## 1. Introduction
 
 > **:memo: NOTE**  
@@ -17,49 +28,49 @@
 
 ### 3.1 Page d’Accueil
 
-- **:star: Présentation générale du projet**  
+- Présentation générale du projet  
   - Affichage d'une brève description de l'application.  
   - Introduction aux fonctionnalités principales.
 
-- **:gear: Menu de navigation**  
+- Menu de navigation  
   - Accès rapide à la carte interactive.  
   - Liens vers la page d’inscription et de connexion.
 
-- **:mag_right: Recherche de ville**  
+- Recherche de ville  
   - Barre de recherche permettant de saisir le nom d'une ville.  
   - Affichage de suggestions lors de la saisie.  
   - Une fois la ville sélectionnée, chargement de la carte avec les établissements associés.
 
 ### 3.2 Carte interactive
 
-- **:world_map: Carte OpenStreetMap**  
+- Carte OpenStreetMap  
   - Intégration de l'API OpenStreetMap pour afficher la carte.  
-  - Affichage des points d’intérêts (restaurants, garages, etc.) sous forme de marqueurs.  
+  - Affichage des points d’intérêt (restaurants, garages, etc.) sous forme de marqueurs.  
   - Possibilité de zoomer, dézoomer et déplacer la carte.
 
-- **:information_source: Informations sur les établissements**  
+- Informations sur les établissements  
   - Lorsque l’utilisateur clique sur un marqueur, un infobulle s’affiche avec les informations de l’établissement : nom, adresse, avis, etc.
 
-- **:mag: Filtres de recherche**  
+- Filtres de recherche  
   - Possibilité de filtrer les établissements par catégorie (restaurant, garage, etc.).  
   - Filtre par note moyenne des établissements.
 
 ### 3.3 Utilisateur non connecté
 
-- **:lock: Navigation et consultation**  
+- Navigation et consultation  
   - L’utilisateur peut naviguer sur la carte, consulter la liste des établissements et voir leurs informations sans se connecter.
 
-- **:link: Accès aux pages d’inscription et de connexion**  
+- Accès aux pages d’inscription et de connexion  
   - L’utilisateur peut se rediriger vers la page d’inscription/connexion s'il souhaite laisser un avis ou interagir avec le contenu.
 
 ### 3.4 Utilisateur connecté
 
-- **:bust_in_silhouette: Espace personnel**  
+- Espace personnel  
   - Possibilité de voir ses avis et évaluations passées.
 
-- **:star: Laisser un avis et évaluation**  
+- Laisser un avis et évaluation  
   - Les utilisateurs peuvent attribuer une note (de 1 à 5 étoiles) et rédiger un avis pour chaque établissement visité.  
-  - Avis modifiable ou supprimable.
+  - Les avis peuvent être modifiés ou supprimés.
 
 ## 4. Architecture technique
 
@@ -70,29 +81,31 @@
 
 ## 5. Interface utilisateur
 
-- **:iphone: Responsive Design**  
+- **Responsive Design**  
   - L’application doit être adaptée aux appareils mobiles, tablettes et ordinateurs de bureau.
 
-- **:art: Éléments d’interface**  
+- **Éléments d’interface**  
   - Boutons clairs pour chaque action (connexion, inscription, recherche, filtrage des établissements, etc.).  
   - Utilisation de cartes interactives avec des marqueurs bien visibles.  
   - Section d’avis et de notation facilement accessible et compréhensible.
 
 ## 6. Performances
 
-- **:zap: Temps de réponse**  
-  - Le temps de chargement de la carte et des informations sur les établissements ne doit pas dépasser 3 secondes.
+- **Temps de réponse**  
+  - Le temps de chargement de la carte et des informations sur les établissements ne doit pas dépasser 3 secondes.  
+  - Utilisation de techniques de mise en cache pour réduire les appels redondants à l'API.
 
-- **:telescope: Optimisation des requêtes API**  
-  - Les requêtes vers l'API OpenStreetMap doivent être optimisées pour limiter les appels et améliorer la performance globale.
+- **Optimisation des requêtes API**  
+  - Les requêtes vers l'API OpenStreetMap doivent être optimisées pour limiter les appels et améliorer la performance globale.  
+  - Implémentation de pagination ou de chargement différé pour les données volumineuses.
 
-## 7. Langages utilisés
-- **:earth: Langages utilisés**
-  - HTML/CSS/JS
-  - Python Web
-  - SQL
+## 7. Langages utilisés
+
+- HTML/CSS/JS  
+- Python Web  
+- SQL
 
 ## 8. Mise en garde
 
 > **:warning: WARNING**  
-> Cette application est en cours de développement et pourrait encore contenir des erreurs ou des fonctionnalités incomplètes. Merci de votre patience pendant que nous l'améliorons.
+> Cette application est en cours de développement. Certaines fonctionnalités, comme l'authentification ou les filtres avancés, pourraient ne pas encore être totalement implémentées. Merci de votre patience pendant que nous l'améliorons.
