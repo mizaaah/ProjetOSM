@@ -1,4 +1,3 @@
-# filepath: /home/mizaah/Bureau/ProjetOSM/app/__init__.py
 from flask import Flask
 from app.models import db
 from app.routes import routes

@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+from app.models import db, Utilisateur, Etablissement, Avis, Ville, Categorie
 
 routes = Blueprint('routes', __name__)
 
@@ -8,8 +9,11 @@ def index():
 
 @routes.route('/accueil')
 def accueil():
-    return render_template('accueil.html')
+    villes = Ville.query.all()
+    return render_template('accueil.html', villes=villes)
 
 @routes.route('/admin')
 def admin():
-    return render_template('admin.html')
+    utilisateurs = Utilisateur.query.all()
+    etablissements = Etablissement.query.all()
+    return render_template('admin.html', utilisateurs=utilisateurs, etablissements=etablissements)
