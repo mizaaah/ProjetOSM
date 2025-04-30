@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        #map {
+            height: 100vh; /* La carte occupe toute la hauteur de la fenêtre */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo">Map</h2>
+        <nav class="navigation">
+            <a href="{{ url_for('routes.index') }}">Accueil</a>
+            <a href="{{ url_for('routes.accueil') }}">Informations</a>
+            <a href="#">Services</a>
+            <a href="mailto:mizaah.833@gmail.com">Contact</a>
+        </nav>
+    </header>
+    <div id="map"></div>
+    <script src="../static/js/map.js"></script>
+</body>
+</html>
