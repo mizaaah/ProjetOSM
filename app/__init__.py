@@ -1,6 +1,6 @@
 from flask import Flask
 from app.models import db
-from app.view import routes  # Correction ici
+from app.routes import routes  
 from app.config import Config
 
 def create_app():
