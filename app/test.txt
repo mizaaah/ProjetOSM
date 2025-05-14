@@ -1,0 +1,76 @@
+from . import db
+
+class utilisateur(db.Model):
+    code_util = db.Column(db.String(64), primary_key=True)
+    nom = db.Column(db.String(64), unique=True, nullable=False)
+    prenom = db.Column(db.String(64), unique=True, nullable=False)
+    nom_utilisateur = db.Column(db.String(64), unique=True, nullable=False)
+    statut = db.Column(db.Boolean, unique=True, nullable=False)
+    mail_util = db.Column(db.String(64), unique=True, nullable=False)
+    mdp = db.Column(db.String(256), nullable=False)
+    def __repr__(self):
+        return f"User ('{self.username}', '{self.email}')"
+
+utilisateurs_bp = Blueprint('utilisateurs', __name__)
+
+@app.route('app/_utilisateurs.py', methods=['POST'])
+def create_utilisateur():
+    data = request.get_json()
+    utilisateur = Utilisateur(
+        code_util=data['code_util'],
+        nom=data['nom'],
+        prenom=data['prenom'],
+        nom_utilisateur=data['nom_utilisateur'],
+        statut=data['statut'],
+        mail_util=data['mail_util'],
+        mdp=data['mdp']
+    )
+    db.session.add(utilisateur)
+    db.session.commit()
+    return jsonify({'message': 'Utilisateur créé'}), 201
+
+@app.route('/utilisateurs', methods=['GET']) # Tous les utilisateurs
+def get_utilisateurs():
+    utilisateurs = Utilisateur.query.all()
+    return jsonify([{
+        'code_util': u.code_util,
+        'nom': u.nom,
+        'prenom': u.prenom,
+        'nom_utilisateur': u.nom_utilisateur,
+        'statut': u.statut,
+        'mail_util': u.mail_util
+    } for u in utilisateurs])
+
+@app.route('/utilisateurs/<code_util>', methods=['GET']) # Un seul utilisateur (via code_util)
+def get_utilisateur(code_util):
+    utilisateur = Utilisateur.query.get_or_404(code_util)
+    return jsonify({
+        'code_util': utilisateur.code_util,
+        'nom': utilisateur.nom,
+        'prenom': utilisateur.prenom,
+        'nom_utilisateur': utilisateur.nom_utilisateur,
+        'statut': utilisateur.statut,
+        'mail_util': utilisateur.mail_util
+    })
+
+@app.route('/utilisateurs/<code_util>', methods=['PUT'])
+def update_utilisateur(code_util):
+    utilisateur = Utilisateur.query.get_or_404(code_util)
+    data = request.get_json()
+
+    utilisateur.nom = data.get('nom', utilisateur.nom)
+    utilisateur.prenom = data.get('prenom', utilisateur.prenom)
+    utilisateur.nom_utilisateur = data.get('nom_utilisateur', utilisateur.nom_utilisateur)
+    utilisateur.statut = data.get('statut', utilisateur.statut)
+    utilisateur.mail_util = data.get('mail_util', utilisateur.mail_util)
+    utilisateur.mdp = data.get('mdp', utilisateur.mdp)
+
+    db.session.commit()
+    return jsonify({'message': 'Utilisateur mis à jour'})
+
+@app.route('/utilisateurs/<code_util>', methods=['DELETE'])
+def delete_utilisateur(code_util):
+    utilisateur = Utilisateur.query.get_or_404(code_util)
+    db.session.delete(utilisateur)
+    db.session.commit()
+    return jsonify({'message': 'Utilisateur supprimé'})
