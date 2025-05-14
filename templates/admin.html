@@ -6,6 +6,32 @@
     <title>Panel Admin</title>
 </head>
 <body>
-    
+    <h1>Liste des utilisateurs</h1>
+    <a href="{{ url_for('routes.ajouter') }}">Ajouter un utilisateur</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.nom_utilisateur }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>
+                    <a href="{{ url_for('routes.modifier', utilisateur_id=utilisateur.id) }}">Modifier</a>
+                    <form action="{{ url_for('routes.supprimer', utilisateur_id=utilisateur.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
