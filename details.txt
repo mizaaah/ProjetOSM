@@ -1,0 +1,67 @@
+Le projet est une application web réalisée avec le framework Flask (Python) en back-end, et HTML/CSS/JavaScript en front-end. Il suit une architecture inspirée du modèle MVC (Modèle-Vue-Contrôleur), bien qu’il contienne certaines redondances à corriger.
+
+1. Fichiers Python :
+
+- __init__.py : Point de démarrage de l’application Flask. Il crée l’instance de l’application, charge la configuration depuis la classe Config, initialise la base de données SQLAlchemy, et enregistre les routes via un blueprint.
+
+- config.py : Fichier de configuration de l’application. Il définit la clé secrète utilisée pour la sécurité (sessions, formulaires, etc.), l’URL de la base de données (SQLite par défaut), et désactive le suivi des modifications SQLAlchemy pour économiser les ressources.
+
+- models.py : Contient les modèles de données utilisés dans la base. Chaque classe représente une table : Utilisateur, Categorie, Etablissement, Avis, Ville. Les relations entre ces tables sont définies à l’aide de SQLAlchemy (clé étrangère, relation).
+
+- routes.py : Contient un blueprint routes et gère les routes simples : la page d’accueil (/), une page d’informations (/accueil), et une page d’administration (/admin). Il fait appel à des fichiers HTML via render_template.
+
+- controller.py : Contient un autre blueprint également appelé routes. Ce fichier définit un modèle Utilisateur redondant avec celui de models.py, et implémente les routes de type CRUD : liste des utilisateurs, ajout, modification, suppression. Ce fichier sert de contrôleur principal pour la gestion des utilisateurs.
+
+2. Fichiers HTML :
+
+- index.html : Page principale de l'application avec une interface utilisateur pour la connexion, l'inscription et la réinitialisation du mot de passe. Utilise Ionicons pour les icônes et jQuery pour les interactions dynamiques.
+
+- accueil.html : Page d’informations avec un header et des liens de navigation.
+
+- admin.html : Interface administrateur affichant la liste des utilisateurs dans un tableau. Contient des liens pour modifier ou supprimer un utilisateur, et un lien pour en ajouter un nouveau.
+
+- ajouter_utilisateur.html : Formulaire d’ajout d’un utilisateur (nom, email, mot de passe). Ce fichier est utilisé pour créer un nouvel utilisateur via la méthode POST.
+
+- map.html : Page affichant une carte interactive grâce à Leaflet.js. La carte est centrée sur Paris et on retrace les restaurants et musées. En lien avec map.js.
+
+3. Fichiers CSS :
+
+- style.css : Feuille de style principale utilisée pour styler les pages comme index.html. Gère l’apparence du header, des boutons, des formulaires et des animations de transition.
+
+- accueil.css : Contenu très similaire voire identique à style.css.
+
+4. Fichiers JavaScript :
+
+- script.js : Gère les interactions de l’interface utilisateur sur la page index : ouverture/fermeture des formulaires (connexion, inscription, mot de passe oublié), navigation entre les différentes fenêtres modales sans rechargement.
+
+- map.js : Initialise une carte Leaflet et y ajoute un marqueur avec un message de bienvenue. Ce script est utilisé dans la page map.html.
+
+5. Fichier image :
+
+- background.jpg : Image de fond utilisée dans les fichiers CSS pour styliser visuellement le fond des pages.
+
+Structure du projet :
+
+/app  
+ ├── __init__.py  
+ ├── config.py  
+ ├── models.py  
+ ├── routes.py  
+ └── controller.py  
+
+/templates  
+ ├── index.html  
+ ├── accueil.html  
+ ├── admin.html  
+ ├── ajouter_utilisateur.html  
+ └── map.html  
+
+/static  
+ ├── css/  
+ │   ├── style.css  
+ │   └── accueil.css  
+ ├── js/  
+ │   ├── script.js  
+ │   └── map.js  
+ └── img/  
+     └── background.jpg  
