@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un établissement</title>
+</head>
+<body>
+    <h1>Modifier un établissement</h1>
+    <form action="{{ url_for('etab_routes.modifier_etablissement', etablissement_id=etablissement.id) }}" method="POST">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" value="{{ etablissement.nom }}" required><br>
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" value="{{ etablissement.adresse }}" required><br>
+
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" value="{{ etablissement.ville }}" required><br>
+
+        <label for="categorie_id">Catégorie :</label>
+        <select id="categorie_id" name="categorie_id" required>
+            {% for cat in categories %}
+                <option value="{{ cat.id }}" {% if cat.id == etablissement.categorie_id %}selected{% endif %}>{{ cat.nom }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+    <a href="{{ url_for('etab_routes.liste_etablissements') }}">Retour</a>
+</body>
+</html>

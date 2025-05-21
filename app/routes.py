@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from app.models import Utilisateur
 
 routes = Blueprint('routes', __name__)
 
@@ -12,4 +13,5 @@ def accueil():
 
 @routes.route('/admin')
 def admin():
-    return render_template('admin.html')
+    utilisateurs = Utilisateur.query.all()
+    return render_template('admin.html', utilisateurs=utilisateurs)

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un avis</title>
+</head>
+<body>
+    <h1>Ajouter un avis</h1>
+    <form action="{{ url_for('avis_routes.ajouter_avis') }}" method="POST">
+        <label for="utilisateur_id">Utilisateur :</label>
+        <select name="utilisateur_id" required>
+            {% for user in utilisateurs %}
+                <option value="{{ user.id }}">{{ user.nom_utilisateur }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="etablissement_id">Établissement :</label>
+        <select name="etablissement_id" required>
+            {% for etab in etablissements %}
+                <option value="{{ etab.id }}">{{ etab.nom }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="evaluation">Évaluation (1 à 5) :</label>
+        <input type="number" name="evaluation" min="1" max="5" required><br>
+
+        <label for="commentaire">Commentaire :</label>
+        <textarea name="commentaire"></textarea><br>
+
+        <button type="submit">Ajouter</button>
+    </form>
+    <a href="{{ url_for('avis_routes.liste_avis') }}">Retour</a>
+</body>
+</html>

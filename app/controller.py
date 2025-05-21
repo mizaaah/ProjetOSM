@@ -1,81 +1,57 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
-from app.models import db
+from app.models import db, Utilisateur
 from flask import current_app
 
-routes = Blueprint('routes', __name__)
+user_routes = Blueprint('user_routes', __name__)
 
-# === MODELE UTILISATEUR ===
-class Utilisateur(db.Model):
-    __tablename__ = 'utilisateurs'
-
-    code_util = db.Column(db.String(64), primary_key=True)
-    nom = db.Column(db.String(64), nullable=False)
-    prenom = db.Column(db.String(64), nullable=False)
-    nom_utilisateur = db.Column(db.String(64), unique=True, nullable=False)
-    statut = db.Column(db.Boolean, nullable=False)
-    mail_util = db.Column(db.String(64), unique=True, nullable=False)
-    mdp = db.Column(db.String(256), nullable=False)
-
-    def __repr__(self):
-        return f"<Utilisateur '{self.nom_utilisateur}'>"
-
-# === ROUTES FLASK CLASSIQUES ===
-
-@routes.route('/utilisateurs')
+@user_routes.route('/utilisateurs')
 def liste_utilisateurs():
     utilisateurs = Utilisateur.query.all()
-    return render_template('utilisateurs/liste.html', utilisateurs=utilisateurs)
+    return render_template('admin.html', utilisateurs=utilisateurs)
 
-@routes.route('/utilisateurs/<code_util>')
-def afficher_utilisateur(code_util):
-    utilisateur = Utilisateur.query.get_or_404(code_util)
-    return render_template('utilisateurs/detail.html', utilisateur=utilisateur)
+@user_routes.route('/utilisateurs/<int:utilisateur_id>')
+def afficher_utilisateur(utilisateur_id):
+    utilisateur = Utilisateur.query.get_or_404(utilisateur_id)
+    return render_template('details.html', utilisateur=utilisateur)
 
-@routes.route('/utilisateurs/ajouter', methods=['GET', 'POST'])
+@user_routes.route('/utilisateurs/ajouter', methods=['GET', 'POST'])
 def ajouter_utilisateur():
     if request.method == 'POST':
-        hashed_password = generate_password_hash(request.form['mdp'])
+        hashed_password = generate_password_hash(request.form['mot_de_passe'])
 
         nouvel_utilisateur = Utilisateur(
-            code_util=request.form['code_util'],
-            nom=request.form['nom'],
-            prenom=request.form['prenom'],
             nom_utilisateur=request.form['nom_utilisateur'],
-            statut=request.form.get('statut') == 'on',
-            mail_util=request.form['mail_util'],
-            mdp=hashed_password
+            email=request.form['email'],
+            mot_de_passe=hashed_password
         )
         db.session.add(nouvel_utilisateur)
         db.session.commit()
         flash('Utilisateur ajouté avec succès')
-        return redirect(url_for('routes.liste_utilisateurs'))
-    
-    return render_template('utilisateurs/ajouter.html')
+        return redirect(url_for('user_routes.liste_utilisateurs'))
 
-@routes.route('/utilisateurs/<code_util>/modifier', methods=['GET', 'POST'])
-def modifier_utilisateur(code_util):
-    utilisateur = Utilisateur.query.get_or_404(code_util)
+    return render_template('ajouter_utilisateur.html')
+
+@user_routes.route('/utilisateurs/<int:utilisateur_id>/modifier', methods=['GET', 'POST'])
+def modifier_utilisateur(utilisateur_id):
+    utilisateur = Utilisateur.query.get_or_404(utilisateur_id)
     
     if request.method == 'POST':
-        utilisateur.nom = request.form['nom']
-        utilisateur.prenom = request.form['prenom']
         utilisateur.nom_utilisateur = request.form['nom_utilisateur']
-        utilisateur.mail_util = request.form['mail_util']
-        utilisateur.statut = request.form.get('statut') == 'on'
-        if request.form['mdp']:
-            utilisateur.mdp = generate_password_hash(request.form['mdp'])
+        utilisateur.email = request.form['email']
+        if request.form['mot_de_passe']:
+            utilisateur.mot_de_passe = generate_password_hash(request.form['mot_de_passe'])
 
         db.session.commit()
         flash('Utilisateur modifié avec succès')
-        return redirect(url_for('routes.liste_utilisateurs'))
+        return redirect(url_for('user_routes.liste_utilisateurs'))
 
-    return render_template('utilisateurs/modifier.html', utilisateur=utilisateur)
+    return render_template('modifier_utilisateur.html', utilisateur=utilisateur)
 
-@routes.route('/utilisateurs/<code_util>/supprimer', methods=['POST'])
-def supprimer_utilisateur(code_util):
-    utilisateur = Utilisateur.query.get_or_404(code_util)
+@user_routes.route('/utilisateurs/<int:utilisateur_id>/supprimer', methods=['POST'])
+def supprimer_utilisateur(utilisateur_id):
+    utilisateur = Utilisateur.query.get_or_404(utilisateur_id)
     db.session.delete(utilisateur)
     db.session.commit()
     flash('Utilisateur supprimé avec succès')
-    return redirect(url_for('routes.liste_utilisateurs'))
+    return redirect(url_for('user_routes.liste_utilisateurs'))
