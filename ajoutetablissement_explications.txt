@@ -1,0 +1,16 @@
+Le formulaire pointe vers /etablissements/ajouter, en methode POST.
+Quand on accède à cette page directement, flask répond à la méthode GET et affiche le formulaire.
+Quand on soumet le formulaire, flask utilise la méthode POST pour traiter les données envoyées.
+Les deux actions utilisent la même URL : /etablissements/ajouter
+
+Dans le fichier de routes flask (par exemple controller.py), on utilise une route comme ceci :
+
+@routes.route('/etablissements/ajouter', methods=['GET', 'POST'])
+def ajouter_etablissement():
+if request.method == 'POST':
+# traitement et insertion dans la base
+
+return redirect(url_for('routes.map'))
+return render_template('ajouter_etablissement.html')
+
+Cela signifie que la méthode GET affiche le formulaire, et la méthode POST traite les données puis redirige vers une autre page.
