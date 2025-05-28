@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Supprimer un utilisateur</title>
-</head>
-<body>
-    <h1>Confirmer la suppression</h1>
-    <p>Etes vous sûr de vouloir supprimer l'utilisateur <strong>{{ utilisateur.nom_utilisateur }}</strong> ?</p>
-    <form action="{{ url_for('user_routes.supprimer_utilisateur', utilisateur_id=utilisateur.id) }}" method="POST">
-        <button type="submit">Oui, supprimer</button>
-        <a href="{{ url_for('user_routes.liste_utilisateurs') }}">Annuler</a>
-    </form>
-</body>
-</html>
+<h2>Supprimer un utilisateur</h2>
+<p>Supprimer l'utilisateur <strong>{{ utilisateur.nom_utilisateur }}</strong> ?</p>
+<form method="POST">
+    <button type="submit">Oui, supprimer</button>
+</form>
+<a href="{{ url_for('routes.admin') }}">Annuler</a>

@@ -2,28 +2,75 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="../static/css/style.css">
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
         #map {
-            height: 100vh; /* La carte occupe toute la hauteur de la fenêtre */
+            height: 90vh;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h2 class="logo">Map</h2>
-        <nav class="navigation">
-            <a href="{{ url_for('routes.index') }}">Accueil</a>
-            <a href="{{ url_for('routes.accueil') }}">Informations</a>
-            <a href="#">Services</a>
-            <a href="mailto:mizaah.833@gmail.com">Contact</a>
-        </nav>
-    </header>
-    <div id="map"></div>
-    <script src="../static/js/map.js"></script>
+
+<h2>Carte des établissements</h2>
+
+<form id="filtreForm">
+    <label for="categorie">Filtrer par catégorie :</label>
+    <select id="categorie">
+        <option value="">Toutes</option>
+        {% for cat in categories %}
+        <option value="{{ cat.id }}">{{ cat.nom }}</option>
+        {% endfor %}
+    </select>
+</form>
+<!-- Boutons d'action -->
+<div style="position: absolute; top: 10px; right: 10px; z-index: 1000; display: flex; gap: 10px;">
+    <a href="{{ url_for('routes.ajouter_etablissement') }}" style="
+        background-color: #4CAF50;
+        color: black;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    ">
+        + Établissement
+    </a>
+
+    <a href="{{ url_for('routes.ajouter_avis') }}" style="
+        background-color: #4CAF50;
+        color: black;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    ">
+        + Avis
+    </a>
+
+    <a href="{{ url_for('routes.accueil') }}" style="
+        background-color: #4CAF50;
+        color: black;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    ">
+        Accueil
+    </a>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+
 </body>
 </html>

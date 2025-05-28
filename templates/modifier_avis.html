@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Modifier un avis</title>
-</head>
-<body>
-    <h1>Modifier un avis</h1>
-    <form action="{{ url_for('avis_routes.modifier_avis', avis_id=avis.id) }}" method="POST">
-        <label for="evaluation">Évaluation (1 à 5) :</label>
-        <input type="number" name="evaluation" min="1" max="5" value="{{ avis.evaluation }}" required><br>
-
-        <label for="commentaire">Commentaire :</label>
-        <textarea name="commentaire">{{ avis.commentaire }}</textarea><br>
-
-        <button type="submit">Enregistrer</button>
-    </form>
-    <a href="{{ url_for('avis_routes.liste_avis') }}">Retour</a>
-</body>
-</html>
+<h2>Modifier un avis</h2>
+<form method="POST">
+    <input type="number" name="evaluation" min="1" max="5" value="{{ avis.evaluation }}" required><br>
+    <textarea name="commentaire">{{ avis.commentaire }}</textarea><br>
+    <button type="submit">Modifier</button>
+</form>

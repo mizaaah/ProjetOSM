@@ -1,0 +1,6 @@
+<h2>Supprimer un établissement</h2>
+<p>Supprimer l’établissement <strong>{{ etablissement.nom }}</strong> ?</p>
+<form method="POST">
+    <button type="submit">Oui, supprimer</button>
+</form>
+<a href="{{ url_for('routes.map') }}">Annuler</a>
