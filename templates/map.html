@@ -30,7 +30,7 @@
 </form>
 <!-- Boutons d'action -->
 <div style="position: absolute; top: 10px; right: 10px; z-index: 1000; display: flex; gap: 10px;">
-    <a href="{{ url_for('routes.ajouter_etablissement') }}" style="
+    <a href="../templates/ajouter_etablissement.html" style="
         background-color: #4CAF50;
         color: black;
         padding: 8px 12px;
@@ -42,7 +42,7 @@
         + Établissement
     </a>
 
-    <a href="{{ url_for('routes.ajouter_avis') }}" style="
+    <a href="../templates/ajouter_avis.html" style="
         background-color: #4CAF50;
         color: black;
         padding: 8px 12px;
@@ -54,7 +54,7 @@
         + Avis
     </a>
 
-    <a href="{{ url_for('routes.accueil') }}" style="
+    <a href="../templates/accueil.html" style="
         background-color: #4CAF50;
         color: black;
         padding: 8px 12px;
@@ -70,7 +70,7 @@
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script src="../static/js/map.js"></script>
 
 </body>
 </html>
