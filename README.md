@@ -13,6 +13,10 @@
 
 ---
 
+![MCD de la base](mcd.png)
+
+---
+
 ## 1. 📖 Introduction
 
 > **:memo: NOTE**  
