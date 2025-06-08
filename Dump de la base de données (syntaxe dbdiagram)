@@ -1,0 +1,38 @@
+Dump de la base pour dbdiagram.io :
+
+Table utilisateur {
+  id int [pk, increment]
+  nom_utilisateur varchar [not null, unique]
+  email varchar [not null, unique]
+  mot_de_passe varchar [not null]
+}
+
+Table categorie {
+  id int [pk, increment]
+  nom varchar [not null, unique]
+}
+
+Table ville {
+  id int [pk, increment]
+  nom varchar [not null, unique]
+  pays varchar [not null]
+}
+
+Table etablissement {
+  id int [pk, increment]
+  nom varchar [not null]
+  adresse varchar [not null]
+  ville varchar [not null]
+  latitude float
+  longitude float
+  categorie_id int [not null, ref: > categorie.id]
+}
+
+Table avis {
+  id int [pk, increment]
+  utilisateur_id int [not null, ref: > utilisateur.id]
+  etablissement_id int [not null, ref: > etablissement.id]
+  evaluation int [not null]
+  commentaire text
+  date_creation datetime [default: `CURRENT_TIMESTAMP`]
+}

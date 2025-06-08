@@ -1,0 +1,91 @@
+Documentation technique :
+
+- Application Flask de gestion d’établissements avec cartographie interactive
+
+Technologies utilisées :
+- Python avec le microframework Flask  
+- SQLite comme base de données  
+- SQLAlchemy pour la gestion ORM  
+- HTML CSS JavaScript pour le rendu client  
+- Leaflet.js pour la carte interactive  
+- Jinja2 pour les templates dynamiques  
+- Environnement virtuel recommandé via venv
+
+Prérequis :
+- Installer Python 3.10 ou plus récent  
+- Créer un environnement virtuel avec python -m venv venv  
+- Activer l’environnement virtuel  
+  - Windows : venv\Scripts\activate  
+  - Linux : source venv/bin/activate  
+- Installer les dépendances avec pip install flask flask_sqlalchemy werkzeug  
+- Initialiser la base avec le script init_db.py  
+- Insérer les établissements avec le script populate_etablissements.py  
+- Lancer l’application avec python run.py  
+- Accéder à http://127.0.0.1:5000 dans le navigateur
+
+Fichiers requis : 
+- Le fichier run.py doit appeler create_app() et démarrer le serveur  
+- Le fichier config.py doit contenir la variable SQLALCHEMY_DATABASE_URI pointant vers une base SQLite
+
+Configuration : 
+- config.py contient les paramètres de configuration  
+  - SQLALCHEMY_DATABASE_URI : chemin vers la base SQLite  
+  - SECRET_KEY : chaîne aléatoire pour les sessions Flask  
+  - SQLALCHEMY_TRACK_MODIFICATIONS : False pour améliorer les performances
+
+Initialisation de l’application :
+- __init__.py configure l’application avec Flask et initialise l’ORM  
+- db.init_app(app) connecte la base à l’application  
+- register_blueprint() permet de charger les routes modulaires depuis routes.py et controller.py
+
+Modèles de données :
+- Utilisateur : nom d’utilisateur email mot de passe  
+- Etablissement : nom adresse ville latitude longitude et catégorie liée  
+- Categorie : restaurant hôtel ou autre  
+- Avis : note commentaire date utilisateur_id etablissement_id  
+- Ville : nom et pays (peut être utilisé dans le futur pour filtrer)
+
+Relations entre modèles : 
+- Etablissement est lié à une Categorie par une clé étrangère  
+- Avis est lié à un Utilisateur et à un Etablissement  
+- Les backref permettent de récupérer facilement les relations inverses
+
+Routes : 
+- routes.py contient les routes d’affichage général  
+  - /accueil /admin /map /  
+- controller.py contient les routes spécifiques à chaque entité  
+  - utilisateurs : /ajouter /modifier/<id> /supprimer/<id>  
+  - etablissements : /ajouter /modifier/<id> /supprimer/<id>  
+  - avis : /ajouter /modifier/<id> /supprimer/<id>  
+- Chaque route POST gère la validation du formulaire et la redirection
+
+Templates :  
+- Stockés dans templates/  
+- Utilisent Jinja2 pour afficher dynamiquement les données  
+- Chaque entité a trois fichiers : ajouter.html modifier.html supprimer.html  
+- map.html contient les scripts Leaflet et boutons contextuels
+
+JavaScript :
+- map.js initialise la carte et permet l’ajout de marqueurs  
+- addMarkerFromForm() utilise les champs de formulaire pour positionner un point  
+- Les scripts JS sont placés dans static/js/
+
+Feuilles de style : 
+- style.css contient les règles CSS globales  
+- Les boutons sur la carte ont un style fixe et positionné via CSS
+
+Sécurité :
+- Les mots de passe sont hashés avec generate_password_hash()  
+- Les suppressions passent par des requêtes POST uniquement  
+- Aucune authentification n’est encore mise en place mais peut être ajoutée avec Flask-Login
+
+Tests manuels :
+- Lancer le serveur et tester les routes dans un navigateur  
+- Remplir les formulaires pour tester les ajouts et modifications  
+- Vérifier l'affichage des marqueurs sur la carte  
+- Observer la console du terminal pour détecter les erreurs
+
+Déploiement :
+- Peut être hébergé localement ou sur un service cloud comme Render
+- Ajouter une variable d’environnement FLASK_APP=run.py  
+- Exécuter flask run ou python run.py pour démarrer
