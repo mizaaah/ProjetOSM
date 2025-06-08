@@ -1,0 +1,77 @@
+Documentation fonctionnelle :
+
+- Système de gestion cartographique et d’évaluation d’établissements touristiques en France  
+- Affichage sur carte interactive avec fonctionnalités d’ajout de modification de suppression et de consultation d’informations
+
+--------Technologies utilisées--------
+- Python avec le framework Flask  
+- SQLite comme base de données  
+- SQLAlchemy pour la gestion des modèles  
+- HTML CSS JavaScript pour le front-end  
+- Leaflet.js pour l’affichage de la carte  
+- Jinja2 pour le rendu dynamique des pages HTML
+
+-------Structure du projet--------  
+- app/ contient la logique principale de l’application  
+  - __init__.py initialise l’application Flask et les blueprints  
+  - config.py contient les paramètres de configuration de l’application  
+  - controller.py gère les routes relatives aux utilisateurs aux établissements et aux avis  
+  - routes.py contient les routes de navigation de base comme index accueil admin map  
+  - models.py définit les modèles SQLAlchemy Utilisateur Etablissement Avis Categorie Ville  
+- templates/ contient les fichiers HTML utilisés par Flask pour afficher les pages  
+  - accueil.html admin.html index.html map.html  
+  - ajouter_modifier_supprimer_etablissement.html  
+  - ajouter_modifier_supprimer_utilisateur.html  
+  - ajouter_modifier_supprimer_avis.html  
+- static/ contient les ressources statiques utilisées par les pages  
+  - css/style.css pour le style général  
+  - js/map.js pour l’initialisation et la gestion de la carte  
+  - js/script.js pour des scripts généraux  
+  - img/background.jpg comme image de fond  
+- run.py permet de démarrer le serveur Flask  
+- init_db.py initialise la base de données et crée les tables  
+- populate_etablissements.py insère 50 établissements dans la base de données  
+- .gitignore contient les fichiers et dossiers à exclure
+
+--------Fonctionnalités principales-----------  
+- Visualisation d’une carte interactive contenant des établissements géolocalisés  
+- Filtrage des établissements par type comme restaurant ou hôtel  
+- Ajout d’un établissement avec nom adresse ville catégorie latitude et longitude  
+- Modification des données d’un établissement existant  
+- Suppression d’un établissement de la base  
+- Ajout d’un avis avec une note un commentaire une date un utilisateur et un établissement liés  
+- Modification d’un avis existant  
+- Suppression d’un avis enregistré  
+- Création modification et suppression de comptes utilisateurs  
+- Interface d’administration simplifiée  
+- Boutons sur la carte pour accéder rapidement aux formulaires  
+- Sécurisation des mots de passe avec un hashage  
+- Intégration dynamique des données avec les templates Jinja2
+
+---------Données gérées-------
+- Un établissement possède un nom une adresse une ville une latitude une longitude et une catégorie  
+- Les catégories possibles sont pré-enregistrées dans la base comme restaurant et hôtel  
+- Un utilisateur possède un nom d’utilisateur un mail et un mot de passe  
+- Un avis contient une note un commentaire une date de création et est lié à un utilisateur et un établissement  
+- Les villes sont définies pour d’éventuelles extensions géographiques
+
+------Procédures de lancement-------  
+- Initialiser la base avec init_db.py  
+- Remplir la base avec populate_etablissements.py  
+- Démarrer le serveur avec run.py  
+- Ouvrir le navigateur sur localhost pour accéder à l’application  
+- Utiliser les formulaires pour ajouter modifier ou supprimer les données
+
+--------Routage de l’application-------
+- /accueil affiche la page principale après connexion ou navigation  
+- /admin affiche le panneau d’administration  
+- /map affiche la carte Leaflet avec les filtres et marqueurs  
+- /etablissements/ajouter permet d’ajouter un établissement  
+- /etablissements/modifier/<id> permet de modifier un établissement  
+- /etablissements/supprimer/<id> permet de supprimer un établissement  
+- /avis/ajouter permet d’ajouter un avis  
+- /avis/modifier/<id> permet de modifier un avis  
+- /avis/supprimer/<id> permet de supprimer un avis  
+- /utilisateurs/ajouter permet d’ajouter un utilisateur  
+- /utilisateurs/modifier/<id> permet de modifier un utilisateur  
+- /utilisateurs/supprimer/<id> permet de supprimer un utilisateur
